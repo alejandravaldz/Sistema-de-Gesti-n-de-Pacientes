@@ -4,6 +4,7 @@ namespace Sistema_de_Gestión_de_Pacientes
     {
         enum sexo
         {
+            //Probando probandooooooooooooooooooooo
             masculino,
             femenino
         }
