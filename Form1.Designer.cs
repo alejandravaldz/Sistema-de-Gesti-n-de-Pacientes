@@ -40,7 +40,7 @@
             label1 = new Label();
             cmb_Estado = new ComboBox();
             txt_Nombre = new TextBox();
-            txt_ = new TextBox();
+            txtEdad = new TextBox();
             txt_Cedula = new TextBox();
             cbm_Sexo = new ComboBox();
             lb_diagnosti = new Label();
@@ -76,42 +76,47 @@
             panel1.Controls.Add(button1);
             panel1.ForeColor = Color.Black;
             panel1.Location = new Point(1, 1);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(362, 915);
+            panel1.Size = new Size(223, 572);
             panel1.TabIndex = 0;
             // 
             // button4
             // 
-            button4.Location = new Point(33, 637);
+            button4.Location = new Point(20, 398);
+            button4.Margin = new Padding(2);
             button4.Name = "button4";
-            button4.Size = new Size(150, 46);
+            button4.Size = new Size(92, 29);
             button4.TabIndex = 5;
             button4.Text = "button4";
             button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            button3.Location = new Point(33, 534);
+            button3.Location = new Point(20, 334);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
-            button3.Size = new Size(150, 46);
+            button3.Size = new Size(92, 29);
             button3.TabIndex = 4;
             button3.Text = "Consulta";
             button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            button2.Location = new Point(33, 436);
+            button2.Location = new Point(20, 272);
+            button2.Margin = new Padding(2);
             button2.Name = "button2";
-            button2.Size = new Size(150, 46);
+            button2.Size = new Size(92, 29);
             button2.TabIndex = 3;
             button2.Text = "Paciente";
             button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.Location = new Point(33, 340);
+            button1.Location = new Point(20, 212);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
-            button1.Size = new Size(150, 46);
+            button1.Size = new Size(92, 29);
             button1.TabIndex = 2;
             button1.Text = "Medico";
             button1.UseVisualStyleBackColor = true;
@@ -120,9 +125,10 @@
             // 
             panel2.BackColor = SystemColors.ActiveCaptionText;
             panel2.Controls.Add(label7);
-            panel2.Location = new Point(359, 1);
+            panel2.Location = new Point(221, 1);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1308, 82);
+            panel2.Size = new Size(805, 51);
             panel2.TabIndex = 1;
             // 
             // label7
@@ -130,9 +136,10 @@
             label7.AutoSize = true;
             label7.BackColor = SystemColors.ActiveCaptionText;
             label7.ForeColor = SystemColors.ButtonHighlight;
-            label7.Location = new Point(523, 21);
+            label7.Location = new Point(322, 13);
+            label7.Margin = new Padding(2, 0, 2, 0);
             label7.Name = "label7";
-            label7.Size = new Size(196, 32);
+            label7.Size = new Size(123, 20);
             label7.TabIndex = 7;
             label7.Text = "Registro Paciente";
             // 
@@ -142,7 +149,7 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(cmb_Estado);
             groupBox1.Controls.Add(txt_Nombre);
-            groupBox1.Controls.Add(txt_);
+            groupBox1.Controls.Add(txtEdad);
             groupBox1.Controls.Add(txt_Cedula);
             groupBox1.Controls.Add(cbm_Sexo);
             groupBox1.Controls.Add(lb_diagnosti);
@@ -152,9 +159,11 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(441, 162);
+            groupBox1.Location = new Point(271, 101);
+            groupBox1.Margin = new Padding(2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1145, 299);
+            groupBox1.Padding = new Padding(2);
+            groupBox1.Size = new Size(705, 187);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -162,123 +171,140 @@
             // lbl_Estado
             // 
             lbl_Estado.AutoSize = true;
-            lbl_Estado.Location = new Point(367, 204);
+            lbl_Estado.Location = new Point(226, 128);
+            lbl_Estado.Margin = new Padding(2, 0, 2, 0);
             lbl_Estado.Name = "lbl_Estado";
-            lbl_Estado.Size = new Size(84, 32);
+            lbl_Estado.Size = new Size(54, 20);
             lbl_Estado.TabIndex = 19;
             lbl_Estado.Text = "Estado";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(356, 205);
+            label1.Location = new Point(219, 128);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(0, 32);
+            label1.Size = new Size(0, 20);
             label1.TabIndex = 18;
             // 
             // cmb_Estado
             // 
             cmb_Estado.FormattingEnabled = true;
-            cmb_Estado.Location = new Point(472, 192);
+            cmb_Estado.Location = new Point(290, 120);
+            cmb_Estado.Margin = new Padding(2);
             cmb_Estado.Name = "cmb_Estado";
-            cmb_Estado.Size = new Size(242, 40);
+            cmb_Estado.Size = new Size(150, 28);
             cmb_Estado.TabIndex = 15;
             // 
             // txt_Nombre
             // 
-            txt_Nombre.Location = new Point(472, 78);
+            txt_Nombre.Location = new Point(290, 49);
+            txt_Nombre.Margin = new Padding(2);
             txt_Nombre.Name = "txt_Nombre";
-            txt_Nombre.Size = new Size(200, 39);
+            txt_Nombre.Size = new Size(125, 27);
             txt_Nombre.TabIndex = 17;
             // 
-            // txt_
+            // txtEdad
             // 
-            txt_.Location = new Point(115, 203);
-            txt_.Name = "txt_";
-            txt_.Size = new Size(200, 39);
-            txt_.TabIndex = 16;
+            txtEdad.Location = new Point(71, 127);
+            txtEdad.Margin = new Padding(2);
+            txtEdad.Name = "txtEdad";
+            txtEdad.Size = new Size(125, 27);
+            txtEdad.TabIndex = 16;
+            txtEdad.TextChanged += txt__TextChanged;
+            txtEdad.KeyPress += txtEdad_KeyPress;
             // 
             // txt_Cedula
             // 
-            txt_Cedula.Location = new Point(115, 80);
+            txt_Cedula.Location = new Point(71, 50);
+            txt_Cedula.Margin = new Padding(2);
             txt_Cedula.Name = "txt_Cedula";
-            txt_Cedula.Size = new Size(200, 39);
+            txt_Cedula.Size = new Size(125, 27);
             txt_Cedula.TabIndex = 14;
             // 
             // cbm_Sexo
             // 
             cbm_Sexo.FormattingEnabled = true;
-            cbm_Sexo.Location = new Point(794, 71);
+            cbm_Sexo.Location = new Point(489, 44);
+            cbm_Sexo.Margin = new Padding(2);
             cbm_Sexo.Name = "cbm_Sexo";
-            cbm_Sexo.Size = new Size(242, 40);
+            cbm_Sexo.Size = new Size(150, 28);
             cbm_Sexo.TabIndex = 13;
             cbm_Sexo.SelectedIndexChanged += cbm_Sexo_SelectedIndexChanged;
             // 
             // lb_diagnosti
             // 
             lb_diagnosti.AutoSize = true;
-            lb_diagnosti.Location = new Point(753, 189);
+            lb_diagnosti.Location = new Point(463, 118);
+            lb_diagnosti.Margin = new Padding(2, 0, 2, 0);
             lb_diagnosti.Name = "lb_diagnosti";
-            lb_diagnosti.Size = new Size(140, 32);
+            lb_diagnosti.Size = new Size(89, 20);
             lb_diagnosti.TabIndex = 12;
             lb_diagnosti.Text = "Diagnostico";
             // 
             // txt_Diagnostico
             // 
-            txt_Diagnostico.Location = new Point(908, 179);
+            txt_Diagnostico.Location = new Point(559, 112);
+            txt_Diagnostico.Margin = new Padding(2);
             txt_Diagnostico.Name = "txt_Diagnostico";
-            txt_Diagnostico.Size = new Size(200, 39);
+            txt_Diagnostico.Size = new Size(125, 27);
             txt_Diagnostico.TabIndex = 8;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(12, 206);
+            label6.Location = new Point(7, 129);
+            label6.Margin = new Padding(2, 0, 2, 0);
             label6.Name = "label6";
-            label6.Size = new Size(66, 32);
+            label6.Size = new Size(43, 20);
             label6.TabIndex = 5;
             label6.Text = "Edad";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(356, 78);
+            label5.Location = new Point(219, 49);
+            label5.Margin = new Padding(2, 0, 2, 0);
             label5.Name = "label5";
-            label5.Size = new Size(102, 32);
+            label5.Size = new Size(64, 20);
             label5.TabIndex = 4;
             label5.Text = "Nombre";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 192);
+            label4.Location = new Point(4, 120);
+            label4.Margin = new Padding(2, 0, 2, 0);
             label4.Name = "label4";
-            label4.Size = new Size(0, 32);
+            label4.Size = new Size(0, 20);
             label4.TabIndex = 3;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 87);
+            label2.Location = new Point(4, 54);
+            label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(88, 32);
+            label2.Size = new Size(55, 20);
             label2.TabIndex = 1;
             label2.Text = "Cedula";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(716, 74);
+            label3.Location = new Point(441, 46);
+            label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(65, 32);
+            label3.Size = new Size(41, 20);
             label3.TabIndex = 2;
             label3.Text = "Sexo";
             // 
             // btn_Guardar
             // 
-            btn_Guardar.Location = new Point(708, 510);
+            btn_Guardar.Location = new Point(436, 319);
+            btn_Guardar.Margin = new Padding(2);
             btn_Guardar.Name = "btn_Guardar";
-            btn_Guardar.Size = new Size(150, 46);
+            btn_Guardar.Size = new Size(92, 29);
             btn_Guardar.TabIndex = 3;
             btn_Guardar.Text = "Guardar";
             btn_Guardar.UseVisualStyleBackColor = true;
@@ -286,9 +312,10 @@
             // 
             // btn_Salir
             // 
-            btn_Salir.Location = new Point(1235, 510);
+            btn_Salir.Location = new Point(760, 319);
+            btn_Salir.Margin = new Padding(2);
             btn_Salir.Name = "btn_Salir";
-            btn_Salir.Size = new Size(150, 46);
+            btn_Salir.Size = new Size(92, 29);
             btn_Salir.TabIndex = 4;
             btn_Salir.Text = "Salir";
             btn_Salir.UseVisualStyleBackColor = true;
@@ -296,9 +323,10 @@
             // 
             // btn_Limpiar
             // 
-            btn_Limpiar.Location = new Point(883, 510);
+            btn_Limpiar.Location = new Point(543, 319);
+            btn_Limpiar.Margin = new Padding(2);
             btn_Limpiar.Name = "btn_Limpiar";
-            btn_Limpiar.Size = new Size(150, 46);
+            btn_Limpiar.Size = new Size(92, 29);
             btn_Limpiar.TabIndex = 4;
             btn_Limpiar.Text = "Limpiar";
             btn_Limpiar.UseVisualStyleBackColor = true;
@@ -306,9 +334,10 @@
             // 
             // btn_Eliminar
             // 
-            btn_Eliminar.Location = new Point(1054, 510);
+            btn_Eliminar.Location = new Point(649, 319);
+            btn_Eliminar.Margin = new Padding(2);
             btn_Eliminar.Name = "btn_Eliminar";
-            btn_Eliminar.Size = new Size(150, 46);
+            btn_Eliminar.Size = new Size(92, 29);
             btn_Eliminar.TabIndex = 5;
             btn_Eliminar.Text = "Eliminar";
             btn_Eliminar.UseVisualStyleBackColor = true;
@@ -318,11 +347,13 @@
             // 
             dgv_Paciente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_Paciente.Columns.AddRange(new DataGridViewColumn[] { Cedula, Nombre, txt_Edad, Sexo, Diagnostico, Fecha });
-            dgv_Paciente.Location = new Point(418, 605);
+            dgv_Paciente.Location = new Point(233, 371);
+            dgv_Paciente.Margin = new Padding(2);
             dgv_Paciente.Name = "dgv_Paciente";
             dgv_Paciente.RowHeadersWidth = 82;
-            dgv_Paciente.Size = new Size(1217, 324);
+            dgv_Paciente.Size = new Size(793, 202);
             dgv_Paciente.TabIndex = 6;
+            dgv_Paciente.CellContentClick += dgv_Paciente_CellContentClick;
             // 
             // Cedula
             // 
@@ -368,10 +399,10 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1669, 964);
+            ClientSize = new Size(1047, 602);
             Controls.Add(dgv_Paciente);
             Controls.Add(btn_Eliminar);
             Controls.Add(btn_Limpiar);
@@ -380,6 +411,7 @@
             Controls.Add(groupBox1);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(2);
             Name = "Form1";
             Text = "Form1";
             panel1.ResumeLayout(false);
@@ -423,7 +455,7 @@
         private ComboBox cmb_Estado;
         private Label label1;
         private TextBox txt_Nombre;
-        private TextBox txt_;
+        private TextBox txtEdad;
         private DataGridViewTextBoxColumn Cedula;
         private DataGridViewTextBoxColumn Nombre;
         private DataGridViewTextBoxColumn txt_Edad;
