@@ -94,11 +94,17 @@ Los datos son validados antes de ser procesados para evitar información incorre
 El programa procesa la información almacenada en una lista dinámica de pacientes. Entre los procesos realizados se encuentran:
 
 • Validación de los datos ingresados.
+
 • Registro de pacientes.
+
 • Búsqueda por ID o nombre.
+
 • Actualización de información.
+
 • Eliminación de pacientes.
+
 • Comprobación de pacientes existentes.
+
 • Manejo de errores y excepciones.
 
 La información se mantiene en memoria mediante List<Paciente> durante la ejecución de la aplicación.
@@ -109,19 +115,28 @@ La información se mantiene en memoria mediante List<Paciente> durante la ejecuc
 Los resultados de las operaciones se muestran mediante:
 
 • DataGridView: para visualizar los pacientes registrados.
+
 • MessageBox: para mostrar confirmaciones, advertencias, errores y mensajes informativos.
+
 • Formularios de la aplicación para visualizar y modificar la información.
 
 
 🛠️ Tecnologías utilizadas
 
 • C#
+
 • .NET
+
 • Windows Forms
+
 • Programación Orientada a Objetos
+
 • List<T>
+
 • Enumeraciones (enum)
+
 • Validaciones
+
 • Manejo de excepciones
 
 
@@ -149,4 +164,4 @@ Desarrollar una aplicación de escritorio que permita gestionar información de 
 
 
 
-Proyecto realizado para la asignatura Programación Básica.
+
