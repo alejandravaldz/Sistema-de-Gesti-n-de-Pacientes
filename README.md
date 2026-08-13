@@ -3,11 +3,17 @@ Sistema de Gestión de Pacientes
 📚 Información del proyecto
 
 Universidad: Universidad Central del Este (UCE)
+
 Asignatura: Programación Básica
+
 Profesor: Gamalier Reyes del Carmen
+
 Proyecto: Sistema de Gestión de Pacientes
+
 Lenguaje: C#
+
 Tecnología: Windows Forms (.NET)
+
 Modalidad: Trabajo en grupo
 
 
@@ -39,15 +45,25 @@ El sistema permite registrar, consultar, buscar, actualizar y eliminar pacientes
 El programa cuenta con las siguientes funcionalidades:
 
 • Registrar nuevos pacientes.
+
 • Listar los pacientes registrados.
+
 • Buscar pacientes por ID o nombre.
+
 • Actualizar los datos de un paciente.
+
 • Eliminar pacientes.
+
 • Validar los datos ingresados.
+
 • Mostrar mensajes de confirmación y error.
+
 • Manejar excepciones mediante try/catch/finally.
+
 • Utilizar enumeraciones para valores predefinidos.
+
 • Salir del sistema.
+
 
 Estas funcionalidades corresponden a las operaciones CRUD requeridas para el proyecto.
 
