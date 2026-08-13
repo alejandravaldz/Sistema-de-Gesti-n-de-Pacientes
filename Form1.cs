@@ -14,7 +14,7 @@ namespace Sistema_de_Gestión_de_Pacientes
             EnObservacion,
             DeAlta,
             Hospitalizado
-            //A Milangel le hiede la boca
+            
         }
         public Form1()
         {
