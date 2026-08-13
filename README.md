@@ -57,11 +57,17 @@ Estas funcionalidades corresponden a las operaciones CRUD requeridas para el pro
 El sistema permite ingresar información relacionada con cada paciente mediante los controles de la interfaz gráfica:
 
 • ID o cédula.
+
 • Nombre completo.
+
 • Edad.
+
 • Sexo.
+
 • Diagnóstico.
+
 • Estado del paciente.
+
 • Fecha de ingreso.
 
 Los datos son validados antes de ser procesados para evitar información incorrecta o duplicada.
