@@ -8,8 +8,6 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         private GestorPaciente gestor = new GestorPaciente();
 
-
-
         public Registro_Paciente()
         {
             InitializeComponent();
