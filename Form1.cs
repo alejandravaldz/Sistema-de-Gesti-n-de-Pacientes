@@ -1,125 +1,88 @@
 namespace Sistema_de_Gestión_de_Pacientes
 {
-    public partial class Form1 : Form
+    public class GestorPaciente
     {
-        enum sexo
+        public List<Paciente> pacientes = new List<Paciente>();
+
+
+        // Agregar un paciente a la lista
+        public void AgregarPaciente(Paciente paciente)
         {
-            //Probando probandooooooooooooooooooooo
-            masculino,
-            femenino
-        }
-        enum Estado
-        {
-            Ingresado,
-            EnObservacion,
-            DeAlta,
-            Hospitalizado
-            
-        }
-        public Form1()
-        {
-            InitializeComponent();
-            cmb_Estado.Items.AddRange(Enum.GetNames(typeof(Estado)));
-            cbm_Sexo.Items.AddRange(Enum.GetNames(typeof(sexo)));
-
-        }
-
-        private void btn_Guardar_Click(object sender, EventArgs e)
-        {
-
-
-            Paciente paciente = new Paciente();
-            paciente.Cedula = txt_Cedula.Text;
-            paciente.Nombre = txt_Nombre.Text;
-            paciente.Sexo = cbm_Sexo.SelectedItem.ToString();
-            paciente.Estado = cmb_Estado.SelectedItem.ToString();
-            paciente.Diagnostico = txt_Diagnostico.Text;
-            paciente.Fecha = DateTime.Now;
-
-            dgv_Paciente.Rows.Add(paciente.Cedula, paciente.Nombre, paciente.Edad, paciente.Sexo, paciente.Estado, paciente.Diagnostico, paciente.Fecha.ToString("dd/MM/yyyy HH:mm:ss"));
-
-
-        }
-        private void btn_Limpiar_Click(object sender, EventArgs e)
-        {
-
-            txt_Cedula.Text = "";
-            txt_Nombre.Text = "";
-            cbm_Sexo.SelectedIndex = -1;
-            txt_Diagnostico.Text = "";
-        }
-
-        private void btn_Salir_Click(object sender, EventArgs e)
-        {
-            DialogResult resultado;
-
-            resultado = MessageBox.Show("¿Desea salir de la aplicación?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resultado == DialogResult.Yes)
+            foreach (Paciente p in pacientes)
             {
-                Close();
-            }
-        }
-
-        private void btn_Eliminar_Click(object sender, EventArgs e)
-        {
-            DataGridView tabla = null;
-
-            foreach (Control control in this.Controls)
-            {
-                if (control is DataGridView)
+                if (p.Cedula == paciente.Cedula)
                 {
-                    tabla = (DataGridView)control;
-                    break;
+                    throw new CedulaDuplicada(paciente.Cedula);
                 }
             }
 
-            if (tabla != null && tabla.CurrentRow != null)
-            {
-                DialogResult respuesta = MessageBox.Show(
-                    "¿Está seguro de querer eliminar los datos de este paciente?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning
-                );
+            pacientes.Add(paciente);
+        }
 
-                if (respuesta == DialogResult.Yes)
+
+        // Listar todos los pacientes
+        public List<Paciente> ListarPacientes()
+        {
+            return pacientes;
+        }
+
+
+        // Buscar paciente por cédula
+        public Paciente BuscarPaciente(string cedula)
+        {
+            foreach (Paciente paciente in pacientes)
+            {
+                if (paciente.Cedula == cedula)
                 {
-                    tabla.Rows.Remove(tabla.CurrentRow);
+                    return paciente;
                 }
             }
-            else
+
+            throw new PacienteNoEncontrado(cedula);
+        }
+
+
+
+
+        // Actualizar paciente
+        public void ActualizarPaciente(Paciente pacienteActualizado)
+        {
+            Paciente paciente = BuscarPaciente(pacienteActualizado.Cedula);
+
+            paciente.Nombre = pacienteActualizado.Nombre;
+            paciente.Edad = pacienteActualizado.Edad;
+            paciente.Sexo = pacienteActualizado.Sexo;
+            paciente.Estado = pacienteActualizado.Estado;
+            paciente.Diagnostico = pacienteActualizado.Diagnostico;
+        }
+
+
+        // Eliminar paciente
+        public void EliminarPaciente(string cedula)
+        {
+            Paciente paciente = BuscarPaciente(cedula);
+
+            pacientes.Remove(paciente);
+        }
+
+
+        // Excepción cuando no se encuentra un paciente
+        public class PacienteNoEncontrado : Exception
+        {
+            public PacienteNoEncontrado(string dato)
+                : base("No se encuentra un paciente con el dato: " + dato)
             {
-                MessageBox.Show(
-                    "Seleccione un paciente para eliminar.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
             }
         }
 
-        private void cbm_Sexo_SelectedIndexChanged(object sender, EventArgs e)
+
+        // Excepción cuando la cédula ya existe
+        public class CedulaDuplicada : Exception
         {
-
-        }
-
-        private void txt__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            public CedulaDuplicada(string cedula)
+                : base("Ya existe un paciente con la cédula: " + cedula)
             {
-                e.Handled = true;
             }
-        }
-
-        private void dgv_Paciente_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
-
