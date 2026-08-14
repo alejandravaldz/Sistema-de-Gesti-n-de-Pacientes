@@ -23,13 +23,11 @@ namespace Sistema_de_Gestión_de_Pacientes
             pacientes.Add(paciente);
         }
 
-
         // Listar todos los pacientes
         public List<Paciente> ListarPacientes()
         {
             return pacientes;
         }
-
 
         // Buscar paciente por cédula
         public Paciente BuscarPaciente(string cedula)
@@ -69,7 +67,6 @@ namespace Sistema_de_Gestión_de_Pacientes
             pacientes.Remove(paciente);
         }
 
-
         // Excepción cuando no se encuentra un paciente
         public class PacienteNoEncontrado : Exception
         {
@@ -78,7 +75,6 @@ namespace Sistema_de_Gestión_de_Pacientes
             {
             }
         }
-
 
         // Excepción cuando la cédula ya existe
         public class CedulaDuplicada : Exception
