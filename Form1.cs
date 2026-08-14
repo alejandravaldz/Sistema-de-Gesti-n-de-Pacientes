@@ -30,7 +30,6 @@ namespace Sistema_de_Gestión_de_Pacientes
             return pacientes;
         }
 
-
         // Buscar paciente por cédula
         public Paciente BuscarPaciente(string cedula)
         {
