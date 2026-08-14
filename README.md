@@ -18,11 +18,11 @@
 
 ## 👥 **Integrantes**
 
-- Alejandra Maciel Valdez Morales — *2026-0028*  
-- Danyi Daniela Aquino Gómez — *2026-0808*  
-- Loandian Reinaldo Travieso Mota — *2026-0672*  
-- Milangel Aponte Santana — *2026-0225*  
-- Starlin Javier Guzmán Sabino — *2026-0311*
+- Alejandra Maciel Valdez Morales — 2026-0028  
+- Danyi Daniela Aquino Gómez — 2026-0808  
+- Loandian Reinaldo Travieso Mota — 2026-0672 
+- Milangel Aponte Santana — 2026-0225  
+- Starlin Javier Guzmán Sabino — 2026-0311
 
 ---
 
@@ -33,6 +33,22 @@ El **Sistema de Gestión de Pacientes** es una aplicación de escritorio desarro
 Permite **registrar, consultar, buscar, actualizar y eliminar** pacientes utilizando una lista dinámica `List<Paciente>` para almacenar temporalmente los datos durante la ejecución.  
 Incluye validaciones, manejo de excepciones, enumeraciones y principios de **programación orientada a objetos (POO)**.
 
+---
+## 🎯 **Objetivo**
+
+Desarrollar una aplicación de escritorio que permita gestionar información de pacientes aplicando los conocimientos de **Programación Básica**, especialmente en **POO**, **listas dinámicas**, **Windows Forms**, **validaciones**, **excepciones** y **enumeraciones**.
+
+---
+## 🛠️ **Tecnologías Utilizadas**
+
+- C#  
+- .NET  
+- Windows Forms  
+- Programación Orientada a Objetos  
+- List\<T\>  
+- Enumeraciones (`enum`)  
+- Validaciones y manejo de excepciones
+  
 ---
 
 ## ⚙️ **Funcionalidades Principales**
@@ -92,18 +108,6 @@ Los resultados se muestran mediante:
 
 ---
 
-## 🛠️ **Tecnologías Utilizadas**
-
-- C#  
-- .NET  
-- Windows Forms  
-- Programación Orientada a Objetos  
-- List\<T\>  
-- Enumeraciones (`enum`)  
-- Validaciones y manejo de excepciones  
-
----
-
 ## 📂 **Organización del Proyecto**
 
 El proyecto se estructura con clases y métodos específicos:
@@ -114,11 +118,6 @@ El proyecto se estructura con clases y métodos específicos:
 
 ---
 
-## 🎯 **Objetivo**
-
-Desarrollar una aplicación de escritorio que permita gestionar información de pacientes aplicando los conocimientos de **Programación Básica**, especialmente en **POO**, **listas dinámicas**, **Windows Forms**, **validaciones**, **excepciones** y **enumeraciones**.
-
----
 
 ## 🖼️ **Captura de Ejecución**
 
