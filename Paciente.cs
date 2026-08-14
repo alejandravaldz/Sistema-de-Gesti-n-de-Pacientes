@@ -28,8 +28,5 @@ namespace Sistema_de_Gestión_de_Pacientes
             public string Diagnostico { get; set; }
             public DateTime FechaIngreso { get; set; }
             
-
-
-
         }
     }
