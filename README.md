@@ -122,6 +122,8 @@ El proyecto se estructura con clases y métodos específicos:
 ## 🖼️ **Captura de Ejecución**
 
 ![Captura de pantalla 2026-08-13 234208](https://github.com/user-attachments/assets/b378f03f-c42f-450d-9f41-ae798f989e27)
+
+---
 <img width="1816" height="1092" alt="Captura de pantalla 2026-08-14 003056" src="https://github.com/user-attachments/assets/d1fc4a87-a7ef-4fa4-805a-f95d960bdf0c" />
 
 
