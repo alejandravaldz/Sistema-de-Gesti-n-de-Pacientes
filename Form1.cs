@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace Sistema_de_Gestión_de_Pacientes
 {
     public class GestorPaciente
