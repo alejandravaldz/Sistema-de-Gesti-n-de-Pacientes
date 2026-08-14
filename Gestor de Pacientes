@@ -1,1 +1,322 @@
+using System.Diagnostics.Eventing.Reader;
+using static Sistema_de_Gestión_de_Pacientes.Paciente;
+
+namespace Sistema_de_Gestión_de_Pacientes
+{
+    public partial class Registro_Paciente : Form
+    {
+
+        private GestorPaciente gestor = new GestorPaciente();
+
+
+
+        public Registro_Paciente()
+        {
+            InitializeComponent();
+            cmb_Estado.Items.AddRange(Enum.GetNames(typeof(Paciente.Estadop)));
+            cbm_Sexo.Items.AddRange(Enum.GetNames(typeof(Paciente.sexo)));
+
+        }
+
+        private void btn_Nuevo_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txt_Cedula.Text))
+                {
+                    MessageBox.Show("La cédula es obligatoria.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txt_Cedula.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txt_Nombre.Text))
+                {
+                    MessageBox.Show("El nombre es obligatorio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txt_Nombre.Focus();
+                    return;
+                }
+
+                if (!int.TryParse(txtEdad.Text, out int edad))
+                {
+                    MessageBox.Show("La edad debe ser un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (cbm_Sexo.SelectedItem == null || cmb_Estado.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar el sexo y el estado del paciente.", "Dato obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                Paciente paciente = new Paciente();
+                paciente.Cedula = txt_Cedula.Text;
+                paciente.Nombre = txt_Nombre.Text;
+                paciente.Edad = edad;
+                paciente.Sexo = (sexo)Enum.Parse(typeof(sexo), cbm_Sexo.SelectedItem.ToString());
+                paciente.Estado = (Estadop)Enum.Parse(typeof(Estadop), cmb_Estado.SelectedItem.ToString());
+                paciente.Diagnostico = txt_Diagnostico.Text;
+                paciente.FechaIngreso = DateTime.Now;
+
+                gestor.AgregarPaciente(paciente);
+
+                dgv_Paciente.DataSource = null;
+                dgv_Paciente.DataSource = gestor.ListarPacientes();
+
+                MessageBox.Show("Paciente registrado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Aquí SÍ se usa la respuesta Sí/No para decidir qué hacer
+                DialogResult repetir = MessageBox.Show("¿Desea registrar otro paciente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (repetir == DialogResult.Yes)
+                {
+                    txt_Cedula.Clear();
+                    txt_Nombre.Clear();
+                    txtEdad.Clear();
+                    txt_Diagnostico.Clear();
+                    cmb_Estado.SelectedIndex = -1;
+                    cbm_Sexo.SelectedIndex = -1;
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            catch (GestorPaciente.CedulaDuplicada ex)
+            {
+                MessageBox.Show(ex.Message, "Cédula duplicada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        
+        }
+
+
+        private void btn_Listar_Click(object sender, EventArgs e)
+        {
+            // Limpiar los campos de entrada y guardar los datos en el DataGridView
+            try
+            {
+                dgv_Paciente.DataSource = null;
+                dgv_Paciente.DataSource = gestor.ListarPacientes();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void btn_Salir_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado;
+
+            resultado = MessageBox.Show("¿Desea salir de la aplicación?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+
+
+
+        private void btn_Eliminar_Click(object sender, EventArgs e)
+        {
+
+           
+            try
+            {
+                if (dgv_Paciente.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show(
+                        "Debe seleccionar un paciente de la tabla.",
+                        "Dato obligatorio",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+               
+
+
+                Paciente pacienteSeleccionado =
+                (Paciente)dgv_Paciente.SelectedRows[0].DataBoundItem;
+
+                DialogResult confirma = MessageBox.Show(
+                    "¿Está seguro de que desea eliminar al paciente " + pacienteSeleccionado.Nombre, "Confirmación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+
+                //aqui se obtiene el usuaria seleccionado y se pregunta si quiere eliminarlo
+
+
+                if (confirma == DialogResult.Yes)
+                {
+                    gestor.EliminarPaciente(pacienteSeleccionado.Cedula);
+
+                    MessageBox.Show(
+                        "Paciente eliminado correctamente.",
+                        "Éxito",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+
+
+                    // Actualizamos la tabla 
+                    dgv_Paciente.DataSource = null;
+                    dgv_Paciente.DataSource = gestor.ListarPacientes();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error durante la eliminación: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+            }
+        }
+
+
+
+        private void btn_inicio_Click(object sender, EventArgs e)
+        {
+            Menu registro = new Menu();
+            registro.Show();
+            this.Hide();
+        }
+
+        private void txt_Cedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_buscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+        }
+
+        private void btn_Modificar_Click(object sender, EventArgs e)
+        {
+
+
+            try
+            {
+                if (string.IsNullOrWhiteSpace(txt_Cedula.Text))
+                {
+                    MessageBox.Show("Debe ingresar la cédula del paciente que desea modificar.", "Dato obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_Cedula.Focus();
+                    return;
+                }
+
+                Paciente paciente = gestor.BuscarPaciente(txt_Cedula.Text);
+
+                txt_Nombre.Text = paciente.Nombre;
+                txtEdad.Text = paciente.Edad.ToString();
+                cbm_Sexo.SelectedItem = paciente.Sexo.ToString();       
+                cmb_Estado.SelectedItem = paciente.Estado.ToString();   
+                txt_Diagnostico.Text = paciente.Diagnostico;
+
+                MessageBox.Show("Datos cargados. Edite los campos y presione el campo que decea modificar", "Modificar paciente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (GestorPaciente.PacienteNoEncontrado ex)
+            {
+                MessageBox.Show(ex.Message, "Paciente no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+      
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cedula = txt_buscar.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(cedula))
+                {
+                    MessageBox.Show(
+                        "Debe escribir una cédula para realizar la búsqueda.",
+                        "Dato obligatorio",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    txt_buscar.Focus();
+                    return;
+                }
+
+                Paciente paciente = gestor.BuscarPaciente(cedula);
+
+                // Mostrar el paciente encontrado en el DataGridView
+                dgv_Paciente.DataSource = null;
+                dgv_Paciente.DataSource = new List<Paciente> { paciente };
+
+
+                DialogResult result = MessageBox.Show("Paciente encontrado correctamente.","Búsqueda",MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    if (result == DialogResult.OK)
+                    {
+                        DialogResult resultado3 = MessageBox.Show("¿Desea Buscar otro registro de paciente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
+                    txt_buscar.Clear();
+
+                    if (result == DialogResult.No)
+                        {
+                            this.Close();
+                        }
+                    }
+
+              
+            }
+            catch (GestorPaciente.PacienteNoEncontrado ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Paciente no encontrado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Ocurrió un error durante la búsqueda: " + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
+            
+        }
+    }
+}
+
 
