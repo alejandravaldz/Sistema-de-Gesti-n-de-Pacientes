@@ -25,7 +25,6 @@ namespace Sistema_de_Gestión_de_Pacientes
             public int Edad { get; set; }
             public sexo Sexo { get; set; }
             public Estadop Estado { get; set; }
-
             public string Diagnostico { get; set; }
             public DateTime FechaIngreso { get; set; }
             
@@ -34,5 +33,3 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         }
     }
-
-
