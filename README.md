@@ -1,168 +1,125 @@
-# Sistema de Gestión de Pacientes
+# 🏥 **Sistema de Gestión de Pacientes**
 
 ---
 
-## 📚 Información del proyecto
+## 📚 **Información del Proyecto**
 
-Universidad: Universidad Central del Este (UCE)
-
-Asignatura: Programación Básica
-
-Profesor: Gamalier Reyes del Carmen
-
-Proyecto: Sistema de Gestión de Pacientes
-
-Lenguaje: C#
-
-Tecnología: Windows Forms (.NET)
-
-Modalidad: Trabajo en grupo
+| Campo | Detalle |
+|-------|----------|
+| **Universidad** | Universidad Central del Este (UCE) |
+| **Asignatura** | Programación Básica |
+| **Profesor** | Gamalier Reyes del Carmen |
+| **Proyecto** | Sistema de Gestión de Pacientes |
+| **Lenguaje** | C# |
+| **Tecnología** | Windows Forms (.NET) |
+| **Modalidad** | Trabajo en grupo |
 
 ---
 
-## 👥 Integrantes
+## 👥 **Integrantes**
 
-
-* Alejandra Maciel Valdez Morales — 2026-0028
-
-* Danyi Daniela Aquino Gómez — 2026-0808
-
-* Loandian Reinaldo Travieso Mota — 2026-0672
-
-* Milangel Aponte Santana — 2026-0225
-
-* Starlin Javier Guzmán Sabino — 2026-0311
+- Alejandra Maciel Valdez Morales — *2026-0028*  
+- Danyi Daniela Aquino Gómez — *2026-0808*  
+- Loandian Reinaldo Travieso Mota — *2026-0672*  
+- Milangel Aponte Santana — *2026-0225*  
+- Starlin Javier Guzmán Sabino — *2026-0311*
 
 ---
 
-## 📌 Descripción del proyecto
+## 🩺 **Descripción del Proyecto**
 
+El **Sistema de Gestión de Pacientes** es una aplicación de escritorio desarrollada en **C#** con **Windows Forms**, diseñada para facilitar el registro y manejo de la información de los pacientes de un centro de salud.
 
-El Sistema de Gestión de Pacientes es una aplicación de escritorio desarrollada en C# mediante Windows Forms, cuyo propósito es facilitar el registro y manejo de la información de los pacientes de un centro de salud.
-
-El sistema permite registrar, consultar, buscar, actualizar y eliminar pacientes, utilizando una lista dinámica List<Paciente> para almacenar temporalmente la información durante la ejecución del programa. Además, incorpora validaciones de datos, manejo de excepciones, enumeraciones y programación orientada a objetos.
-
----
-
-## ⚙️ Funcionalidades
-
-
-El programa cuenta con las siguientes funcionalidades:
-
-* Registrar nuevos pacientes.
-
-* Listar los pacientes registrados.
-
-* Buscar pacientes por ID o nombre.
-
-* Actualizar los datos de un paciente.
-
-* Eliminar pacientes.
-
-* Validar los datos ingresados.
-
-* Mostrar mensajes de confirmación y error.
-
-* Manejar excepciones mediante try/catch/finally.
-
-* Utilizar enumeraciones para valores predefinidos.
-
-* Salir del sistema.
-
-
-Estas funcionalidades corresponden a las operaciones CRUD requeridas para el proyecto.
+Permite **registrar, consultar, buscar, actualizar y eliminar** pacientes utilizando una lista dinámica `List<Paciente>` para almacenar temporalmente los datos durante la ejecución.  
+Incluye validaciones, manejo de excepciones, enumeraciones y principios de **programación orientada a objetos (POO)**.
 
 ---
 
-## 📝 Datos de entrada
+## ⚙️ **Funcionalidades Principales**
 
-El sistema permite ingresar información relacionada con cada paciente mediante los controles de la interfaz gráfica:
+- Registrar nuevos pacientes  
+- Listar pacientes registrados  
+- Buscar por ID o nombre  
+- Actualizar datos del paciente  
+- Eliminar registros  
+- Validar información ingresada  
+- Mostrar mensajes de confirmación y error  
+- Manejar excepciones con `try/catch/finally`  
+- Utilizar enumeraciones para valores predefinidos  
+- Salir del sistema  
 
-* ID o cédula.
-
-* Nombre completo.
-
-* Edad.
-
-* Sexo.
-
-* Diagnóstico.
-
-* Estado del paciente.
-
-* Fecha de ingreso.
-
-Los datos son validados antes de ser procesados para evitar información incorrecta o duplicada.
+> Estas funciones implementan las operaciones CRUD requeridas para el proyecto.
 
 ---
 
-## 🔄 Datos que procesa
+## 📝 **Datos de Entrada**
 
-El programa procesa la información almacenada en una lista dinámica de pacientes. Entre los procesos realizados se encuentran:
+El sistema permite ingresar información mediante los controles de la interfaz:
 
-* Validación de los datos ingresados.
+- Cédula o ID  
+- Nombre completo  
+- Edad  
+- Sexo  
+- Diagnóstico  
+- Estado del paciente  
+- Fecha de ingreso  
 
-* Registro de pacientes.
-
-* Búsqueda por ID o nombre.
-
-* Actualización de información.
-
-* Eliminación de pacientes.
-
-* Comprobación de pacientes existentes.
-
-* Manejo de errores y excepciones.
-
-La información se mantiene en memoria mediante List<Paciente> durante la ejecución de la aplicación.
+> Todos los datos son validados para evitar errores o duplicados.
 
 ---
 
-## 📤 Datos de salida
+## 🔄 **Procesamiento de Datos**
 
-Los resultados de las operaciones se muestran mediante:
+El programa gestiona la información almacenada en una lista dinámica `List<Paciente>` y realiza:
 
-* DataGridView: para visualizar los pacientes registrados.
+- Validación de datos  
+- Registro y actualización  
+- Búsqueda por ID o nombre  
+- Eliminación de pacientes  
+- Manejo de errores y excepciones  
 
-* MessageBox: para mostrar confirmaciones, advertencias, errores y mensajes informativos.
-
-* Formularios de la aplicación para visualizar y modificar la información.
-
----
-
-## 🛠️ Tecnologías utilizadas
-
-* C#
-
-* .NET
-
-* Windows Forms
-
-* Programación Orientada a Objetos
-
-* List<T>
-
-* Enumeraciones (enum)
-
-* Validaciones
-
-* Manejo de excepciones
+> La información se mantiene en memoria durante la ejecución.
 
 ---
 
-## 📂 Organización del proyecto
+## 📤 **Datos de Salida**
 
-El proyecto está organizado utilizando clases y métodos con responsabilidades específicas. Se contempla una clase Paciente para representar la información de los pacientes y una clase de gestión para manejar las operaciones CRUD sobre la lista de pacientes. Los formularios de Windows Forms se encargan de la interacción con el usuario.
+Los resultados se muestran mediante:
 
----
-
-## 🎯 Objetivo
-
-Desarrollar una aplicación de escritorio que permita gestionar información de pacientes aplicando los conocimientos adquiridos en la asignatura de Programación Básica, especialmente en programación orientada a objetos, listas dinámicas, Windows Forms, validaciones, excepciones y enumeraciones.
+- **DataGridView:** visualización de pacientes registrados  
+- **MessageBox:** confirmaciones, advertencias y errores  
+- **Formularios:** para modificar y consultar información  
 
 ---
 
-## 🖼️ Captura de Ejecución
-<img width="1600" height="957" alt="WhatsApp Image 2026-07-19 at 10 11 52 PM" src="https://github.com/user-attachments/assets/677a33db-0347-4a8e-9bbb-b35e7aa0b813" />
+## 🛠️ **Tecnologías Utilizadas**
 
+- C#  
+- .NET  
+- Windows Forms  
+- Programación Orientada a Objetos  
+- List\<T\>  
+- Enumeraciones (`enum`)  
+- Validaciones y manejo de excepciones  
 
+---
+
+## 📂 **Organización del Proyecto**
+
+El proyecto se estructura con clases y métodos específicos:
+
+- **Clase `Paciente`:** representa la información del paciente.  
+- **Clase de gestión:** maneja las operaciones CRUD sobre la lista.  
+- **Formularios:** gestionan la interacción con el usuario.
+
+---
+
+## 🎯 **Objetivo**
+
+Desarrollar una aplicación de escritorio que permita gestionar información de pacientes aplicando los conocimientos de **Programación Básica**, especialmente en **POO**, **listas dinámicas**, **Windows Forms**, **validaciones**, **excepciones** y **enumeraciones**.
+
+---
+
+## 🖼️ **Captura de Ejecución**
+
+![Captura de pantalla 2026-08-13 234208](https://github.com/user-attachments/assets/b378f03f-c42f-450d-9f41-ae798f989e27)
