@@ -8,8 +8,6 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         private GestorPaciente gestor = new GestorPaciente();
 
-
-
         public Registro_Paciente()
         {
             InitializeComponent();
@@ -142,8 +140,6 @@ namespace Sistema_de_Gestión_de_Pacientes
                     return;
                 }
                
-
-
                 Paciente pacienteSeleccionado =
                 (Paciente)dgv_Paciente.SelectedRows[0].DataBoundItem;
 
@@ -184,8 +180,6 @@ namespace Sistema_de_Gestión_de_Pacientes
 
             }
         }
-
-
 
         private void btn_inicio_Click(object sender, EventArgs e)
         {
