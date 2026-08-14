@@ -46,8 +46,6 @@ namespace Sistema_de_Gestión_de_Pacientes
         }
 
 
-
-
         // Actualizar paciente
         public void ActualizarPaciente(Paciente pacienteActualizado)
         {
