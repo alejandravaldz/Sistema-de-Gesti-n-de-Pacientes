@@ -238,7 +238,7 @@ namespace Sistema_de_Gestión_de_Pacientes
         return;
     }
 
-    if (modificacion)
+    if (!modificacion)
     {
         // PRIMER CLIC: mostrar datos
         Paciente paciente = gestor.BuscarPaciente(txt_Cedula.Text);
