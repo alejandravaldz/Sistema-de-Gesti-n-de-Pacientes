@@ -17,6 +17,8 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         }
 
+        
+
         private void btn_Nuevo_Click(object sender, EventArgs e)
         {
 
@@ -96,6 +98,8 @@ namespace Sistema_de_Gestión_de_Pacientes
         }
 
 
+
+
         private void btn_Listar_Click(object sender, EventArgs e)
         {
             // Limpiar los campos de entrada y guardar los datos en el DataGridView
@@ -122,6 +126,7 @@ namespace Sistema_de_Gestión_de_Pacientes
                 Application.Exit();
             }
         }
+
 
 
 
@@ -184,6 +189,8 @@ namespace Sistema_de_Gestión_de_Pacientes
             }
         }
 
+
+
         private void btn_inicio_Click(object sender, EventArgs e)
         {
             Menu registro = new Menu();
@@ -216,6 +223,9 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         }
 
+
+        
+
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
         try
@@ -228,7 +238,7 @@ namespace Sistema_de_Gestión_de_Pacientes
         return;
     }
 
-    if (!modificacion)
+    if (modificacion)
     {
         // PRIMER CLIC: mostrar datos
         Paciente paciente = gestor.BuscarPaciente(txt_Cedula.Text);
@@ -308,7 +318,9 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         }
 
-      
+
+
+
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
