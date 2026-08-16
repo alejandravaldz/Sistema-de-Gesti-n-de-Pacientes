@@ -176,9 +176,12 @@ El proyecto se estructura con clases y métodos específicos:
 <br>
 <img width="1806" alt="Resultado de búsqueda" src="https://github.com/user-attachments/assets/e7034d93-adde-4c9d-bc58-4391c332ecb8" />
 <br>
+<br>
 *Mensaje que pregunta si desea buscar otro registro de paciente.*
 <br>
+<br>
 <img width="1800" alt="Buscar otro paciente" src="https://github.com/user-attachments/assets/4948f2ee-408e-4e43-9222-5f7e9ddb407a" />
+<br>
 <br>
 *Mensaje de error cuando la cédula no existe.*
 <br>
