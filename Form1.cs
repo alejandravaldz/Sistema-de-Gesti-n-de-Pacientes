@@ -7,6 +7,7 @@ namespace Sistema_de_Gestión_de_Pacientes
     {
 
         private GestorPaciente gestor = new GestorPaciente();
+          private bool modificacion = false; // Variable para controlar el modo de modificación
 
         public Registro_Paciente()
         {
@@ -77,7 +78,9 @@ namespace Sistema_de_Gestión_de_Pacientes
                 }
                 else
                 {
-                    this.Close();
+                     Menu registro = new Menu();
+                     registro.Show();
+                     this.Hide();
                 }
             }
             catch (GestorPaciente.CedulaDuplicada ex)
@@ -215,35 +218,93 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         private void btn_Modificar_Click(object sender, EventArgs e)
         {
+        try
+{
+    if (string.IsNullOrWhiteSpace(txt_Cedula.Text))
+    {
+        MessageBox.Show("Debe ingresar la cédula del paciente.",
+                        "Dato obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        txt_Cedula.Focus();
+        return;
+    }
+
+    if (!modificacion)
+    {
+        // PRIMER CLIC: mostrar datos
+        Paciente paciente = gestor.BuscarPaciente(txt_Cedula.Text);
+
+        txt_Nombre.Text = paciente.Nombre;
+        txtEdad.Text = paciente.Edad.ToString();
+        cbm_Sexo.SelectedItem = paciente.Sexo.ToString();
+        cmb_Estado.SelectedItem = paciente.Estado.ToString();
+        txt_Diagnostico.Text = paciente.Diagnostico;
+
+        MessageBox.Show("Datos cargados. Edite los campos y presione nuevamente el botón para guardar.",
+                        "Consulta de paciente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        modificacion = true;
+    }
+    else
+    {
+        // SEGUNDO CLIC: guardar cambios
+        if (!int.TryParse(txtEdad.Text, out int edadValida))
+        {
+            MessageBox.Show("Debe ingresar una edad válida (solo números).",
+                            "Dato obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            txtEdad.Focus();
+            return;
+        }
+
+        if (cbm_Sexo.SelectedItem == null || cmb_Estado.SelectedItem == null)
+        {
+            MessageBox.Show("Debe seleccionar el sexo y el estado del paciente.",
+                            "Dato obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        Paciente pacienteActualizado = new Paciente
+        {
+            Cedula = txt_Cedula.Text,
+            Nombre = txt_Nombre.Text,
+            Edad = edadValida,
+            Sexo = (Paciente.sexo)Enum.Parse(typeof(Paciente.sexo), cbm_Sexo.SelectedItem.ToString()),
+            Estado = (Paciente.Estadop)Enum.Parse(typeof(Paciente.Estadop), cmb_Estado.SelectedItem.ToString()),
+            Diagnostico = txt_Diagnostico.Text,
+            FechaIngreso = DateTime.Now
+        };
+
+        gestor.ActualizarPaciente(pacienteActualizado);
+
+        dgv_Paciente.DataSource = null;
+        dgv_Paciente.DataSource = gestor.ListarPacientes();
+
+       DialogResult resultado= MessageBox.Show("Paciente modificado correctamente.",
+                        "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        if (resultado == DialogResult.OK)
+        {
+            modificacion = false;
+
+            txt_Cedula.Clear();
+            txt_Nombre.Clear();
+            txtEdad.Clear();
+            txt_Diagnostico.Clear();
+            cmb_Estado.SelectedIndex = -1;
+            cbm_Sexo.SelectedIndex = -1;
+
+        }
 
 
-            try
-            {
-                if (string.IsNullOrWhiteSpace(txt_Cedula.Text))
-                {
-                    MessageBox.Show("Debe ingresar la cédula del paciente que desea modificar.", "Dato obligatorio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txt_Cedula.Focus();
-                    return;
-                }
-
-                Paciente paciente = gestor.BuscarPaciente(txt_Cedula.Text);
-
-                txt_Nombre.Text = paciente.Nombre;
-                txtEdad.Text = paciente.Edad.ToString();
-                cbm_Sexo.SelectedItem = paciente.Sexo.ToString();       
-                cmb_Estado.SelectedItem = paciente.Estado.ToString();   
-                txt_Diagnostico.Text = paciente.Diagnostico;
-
-                MessageBox.Show("Datos cargados. Edite los campos y presione el campo que decea modificar", "Modificar paciente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (GestorPaciente.PacienteNoEncontrado ex)
-            {
-                MessageBox.Show(ex.Message, "Paciente no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+    }
+}
+       catch (GestorPaciente.PacienteNoEncontrado ex)
+       {
+       MessageBox.Show(ex.Message, "Paciente no encontrado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+       }
+       catch (Exception ex)
+       {
+       MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+       }
 
         }
 
@@ -251,44 +312,43 @@ namespace Sistema_de_Gestión_de_Pacientes
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string cedula = txt_buscar.Text.Trim();
+             try
+ {
+     string cedula = txt_buscar.Text.Trim();
 
-                if (string.IsNullOrWhiteSpace(cedula))
-                {
-                    MessageBox.Show(
-                        "Debe escribir una cédula para realizar la búsqueda.",
-                        "Dato obligatorio",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+     if (string.IsNullOrWhiteSpace(cedula))
+     {
+         MessageBox.Show("Debe escribir una cédula para realizar la búsqueda.", "Dato obligatorio",
+             MessageBoxButtons.OK, MessageBoxIcon.Warning);
+         txt_buscar.Focus();
+         return;
+     }
 
-                    txt_buscar.Focus();
-                    return;
-                }
+     Paciente paciente = gestor.BuscarPaciente(cedula);
 
-                Paciente paciente = gestor.BuscarPaciente(cedula);
+     dgv_Paciente.DataSource = null;
+     dgv_Paciente.DataSource = new List<Paciente> { paciente };
 
-                // Mostrar el paciente encontrado en el DataGridView
-                dgv_Paciente.DataSource = null;
-                dgv_Paciente.DataSource = new List<Paciente> { paciente };
+     MessageBox.Show("Paciente encontrado correctamente.", "Búsqueda",
+         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                DialogResult result = MessageBox.Show("Paciente encontrado correctamente.","Búsqueda",MessageBoxButtons.OK, MessageBoxIcon.Information);
+     DialogResult resultado3 = MessageBox.Show("¿Desea buscar otro registro de paciente?",
+         "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (result == DialogResult.OK)
-                    {
-                        DialogResult resultado3 = MessageBox.Show("¿Desea Buscar otro registro de paciente?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+     txt_buscar.Clear();
 
-
-                    txt_buscar.Clear();
-
-                    if (result == DialogResult.No)
-                        {
-                            this.Close();
-                        }
-                    }
-
+     if (resultado3 == DialogResult.No)
+     {
+         Menu registro = new Menu();
+         registro.Show();
+         this.Hide();
+     }
+     else
+     {
+         // Si quiere seguir buscando, mostramos de nuevo la lista completa de paciente en el dataGridView
+         Actualizarbus();
+     }
               
             }
             catch (GestorPaciente.PacienteNoEncontrado ex)
@@ -308,7 +368,12 @@ namespace Sistema_de_Gestión_de_Pacientes
                     MessageBoxIcon.Error);
             }
 
-            
+        }
+         private void Actualizarbus()
+        {
+           dgv_Paciente.DataSource = null;
+           dgv_Paciente.DataSource = gestor.ListarPacientes();
+
         }
     }
 }
