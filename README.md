@@ -131,7 +131,7 @@ El proyecto se estructura con clases y métodos específicos:
 
 ### 🧑‍⚕️ Registro Paciente
 
-*Formulario con los datos de un nuevo paciente antes de guardar.*
+*Formulario con los datos de un nuevo paciente antes de guardar*
 
 <img width="1816" alt="Formulario de registro" src="https://github.com/user-attachments/assets/d1fc4a87-a7ef-4fa4-805a-f95d960bdf0c" />
 
