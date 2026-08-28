@@ -36,7 +36,7 @@ Incluye validaciones, manejo de excepciones, enumeraciones y principios de **pro
 ---
 ## 🎯 **Objetivo**
 
-Desarrollar una aplicación de escritorio que permita gestionar información de pacientes aplicando los conocimientos de **Programación Básica**, especialmente en **POO**, **listas dinámicas**, **Windows Forms**, **validaciones**, **excepciones** y **enumeraciones**.
+Desarrollar una aplicación de escritorio que permita gestionar información de pacientes aplicando los conocimientos de **Programación Básica**, especialmente en **POO**, **listas dinámicas**, **Windows Forms**, **validaciones**, **excepciones** y **enumeraciones**
 
 ---
 ## 🛠️ **Tecnologías Utilizadas**
