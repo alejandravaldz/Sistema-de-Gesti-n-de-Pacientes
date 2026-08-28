@@ -249,7 +249,7 @@ El proyecto se estructura con clases y métodos específicos:
 
 <br><br>
 
-*Resultado tras la eliminación.*
+*Resultado tras la eliminación*
 
 <img width="1729" alt="Resultado tras eliminar" src="https://github.com/user-attachments/assets/7b0cbaa8-6a33-4970-b252-661a214c2914" />
 
